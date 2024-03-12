@@ -1,0 +1,1 @@
+a slice is a group of stuff for a single feature, so the logic for a comments section is going to have a different group of states and functions than the slice for a posts section 
