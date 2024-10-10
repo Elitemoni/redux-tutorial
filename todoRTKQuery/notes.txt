@@ -1,0 +1,5 @@
+json-server --watch data/db.json --port 3500
+
+put and patch are part of update in CRUD,
+put is used for replacing the record
+patch is used for replacing a part of the record

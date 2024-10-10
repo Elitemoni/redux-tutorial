@@ -43,7 +43,7 @@ const initialState = {
 export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
    try {
       const response = await axios.get(POSTS_URL)
-      return [...response.data]
+      return response.data
    } catch (err) {
       return err.message
    }
@@ -139,9 +139,27 @@ const postsSlice = createSlice({
    }
 })
 
-export const selectAllPosts = ((state) => state.posts.posts)
-export const getPostsStatus = ((state) => state.posts.status)
-export const getPostsError = ((state) => state.posts.error)
+export const selectAllPosts = (state) => state.posts.posts
+export const makeSelectPost = (id) => (state) => state.posts.posts.find(post => post.id === id);
+
+//const selectPost = makeSelectPost(10);
+
+//const post = useSelector(selectPost);
+
+export const getPostsStatus = (state) => state.posts.status
+export const getPostsError = (state) => state.posts.error
 
 export const { postAdded, reactionAdded } = postsSlice.actions
 export default postsSlice.reducer
+
+const state = { a: { bbbb: 44}, b:20}
+
+const newState = {
+   ...state,
+   a: {
+      ...state.a,
+      bbbb: 22
+   }
+}
+
+state.a.bbbb = 22;
